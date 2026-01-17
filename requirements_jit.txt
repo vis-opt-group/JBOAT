@@ -1,0 +1,10 @@
+# Core dependencies
+setuptools           # Package building and distribution
+numpy                # Numerical computations
+
+# Utilities
+tqdm                 # Progress bar
+
+# Deep learning
+jittor               # High-performance deep learning framework
+matplotlib
