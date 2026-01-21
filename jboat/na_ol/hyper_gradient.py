@@ -1,5 +1,5 @@
 from abc import abstractmethod
-from boat_jit.operation_registry import register_class
+from jboat.operation_registry import register_class
 
 importlib = __import__("importlib")
 

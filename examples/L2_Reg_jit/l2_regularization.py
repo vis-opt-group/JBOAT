@@ -7,7 +7,7 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")
 
 import jittor as jit
 
-import boat_jit as boat
+import jboat as boat
 from sklearn.model_selection import train_test_split
 from sklearn.datasets import fetch_20newsgroups_vectorized
 

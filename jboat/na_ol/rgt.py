@@ -1,16 +1,14 @@
 from jittor import Module
 from typing import List, Callable, Dict
 from ..higher_jit.patch import _MonkeyPatchBase
-
-
-from boat_jit.operation_registry import register_class
-from boat_jit.na_ol.hyper_gradient import HyperGradient
+from jboat.operation_registry import register_class
+from jboat.na_ol.hyper_gradient import HyperGradient
 
 
 @register_class
-class PTT(HyperGradient):
+class RGT(HyperGradient):
     """
-    Computes the hyper-gradient of the upper-level variables using Pessimistic Trajectory Truncation (PTT) [1].
+    Computes the hyper-gradient of the upper-level variables using Reverse Gradient Truncation (RGT) [1].
 
     Parameters
     ----------
@@ -27,12 +25,11 @@ class PTT(HyperGradient):
     ul_var : List[jittor.Var]
         List of variables optimized with the upper-level objective.
     solver_config : Dict[str, Any]
-        Dictionary containing solver configurations, including:
-        - "na_op" (List[str]): Indicates if PTT is used in the hyper-gradient operations.
+        Dictionary containing solver configurations, including the hyper-gradient operations and truncation settings.
 
     References
     ----------
-    [1] Liu R., Liu Y., Zeng S., et al. "Towards gradient-based bilevel optimization with non-convex followers and beyond," in NeurIPS, 2021.
+    [1] Shaban A., Cheng C.A., Hatch N., et al. "Truncated back-propagation for bilevel optimization," in AISTATS, 2019.
     """
 
     def __init__(
@@ -45,7 +42,7 @@ class PTT(HyperGradient):
         ul_var: List,
         solver_config: Dict,
     ):
-        super(PTT, self).__init__(
+        super(RGT, self).__init__(
             ll_objective,
             ul_objective,
             ul_model,
@@ -55,6 +52,7 @@ class PTT(HyperGradient):
             solver_config,
         )
         self.truncate_max_loss_iter = "PTT" in solver_config["na_op"]
+        self.truncate_iter = solver_config["RGT"]["truncate_iter"]
 
     def compute_gradients(
         self,
@@ -72,37 +70,30 @@ class PTT(HyperGradient):
         Parameters
         ----------
         ll_feed_dict : Dict
-            Dictionary containing the lower-level data used for optimization.
-            It typically includes training data, targets, and other information required to compute the LL objective.
-
+            Dictionary containing the lower-level data used for optimization. It typically includes training data, targets, and other information required to compute the LL objective.
         ul_feed_dict : Dict
-            Dictionary containing the upper-level data used for optimization.
-            It typically includes validation data, targets, and other information required to compute the UL objective.
-
+            Dictionary containing the upper-level data used for optimization. It typically includes validation data, targets, and other information required to compute the UL objective.
         auxiliary_model : _MonkeyPatchBase
-            A patched lower model wrapped by the `higher` library.
-            It serves as the lower-level model for optimization.
-
-        max_loss_iter : int, optional
-            The number of iterations used for backpropagation, by default 0.
-
-        next_operation : str, optional
-            The next operator for the calculation of the hypergradient, by default None.
-
-        hyper_gradient_finished : bool, optional
-            A boolean flag indicating whether the hypergradient computation is finished, by default False.
+            A patched lower model wrapped by the `higher` library. It serves as the lower-level model for optimization.
+        max_loss_iter : int
+            The number of iterations used for backpropagation.
+        next_operation : str
+            The next operator for the calculation of the hypergradient.
+        hyper_gradient_finished : bool
+            A boolean flag indicating whether the hypergradient computation is finished.
 
         Returns
         -------
-        Dict
-            A dictionary containing updated feed_dict, auxiliary model, and gradient computation results.
+        Any
+            The current upper-level objective.
         """
+
         assert (
             hyper_gradient_finished is False
         ), "Hypergradient computation should not be finished"
-        assert self.truncate_max_loss_iter and (
-            max_loss_iter > 0
-        ), "With PTT operation, 'max_loss_iter' should be greater than 0"
+        assert (
+            self.truncate_iter > 0
+        ), "With RGT operation, 'truncate_iter' should be greater than 0"
         assert next_operation is not None, "Next operation should be defined"
         lower_model_params = kwargs.get(
             "lower_model_params", list(auxiliary_model.parameters(time=max_loss_iter))

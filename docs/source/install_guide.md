@@ -37,7 +37,7 @@ Once Jittor is ready, install BOAT-jit via PyPI or Source:
 pip install boat-jit
 
 # Or install from Source (Specific Branch)
-git clone -b boat_jit --single-branch [https://github.com/callous-youth/BOAT.git](https://github.com/callous-youth/BOAT.git)
+git clone -b jboat --single-branch [https://github.com/callous-youth/BOAT.git](https://github.com/callous-youth/BOAT.git)
 cd BOAT
 pip install -e .
 ```
@@ -47,11 +47,12 @@ pip install -e .
 ### **1. Load Configuration Files**
 BOAT relies on two key configuration files:
 - `boat_config.json`: Specifies optimization strategies and dynamic/hyper-gradient operations.
-- `loss_config.json`: Defines the loss functions for both levels of the BLO process.  
+- `loss_config.json`: Defines the loss functions for both levels of the BLO process.
+
 ```python
 import os
 import json
-import boat_jit as boat
+import jboat as boat
 
 # Load configuration files
 with open("path_to_configs/boat_config.json", "r") as f:

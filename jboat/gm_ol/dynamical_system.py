@@ -1,10 +1,10 @@
 import abc
 from typing import List, Dict
-from boat_jit.utils import DynamicalSystemRules, ResultStore
+from jboat.utils import DynamicalSystemRules, ResultStore
 
 importlib = __import__("importlib")
 
-from boat_jit.operation_registry import register_class
+from jboat.operation_registry import register_class
 
 
 @register_class

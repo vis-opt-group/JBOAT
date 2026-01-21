@@ -13,8 +13,8 @@ from ..utils.op_utils import (
     manual_update,
 )
 
-from boat_jit.operation_registry import register_class
-from boat_jit.gm_ol.dynamical_system import DynamicalSystem
+from jboat.operation_registry import register_class
+from jboat.gm_ol.dynamical_system import DynamicalSystem
 
 
 @register_class

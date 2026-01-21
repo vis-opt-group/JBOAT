@@ -2,10 +2,10 @@ import jittor as jit
 from jittor import Module
 from typing import List, Callable, Dict
 from ..higher_jit.patch import _MonkeyPatchBase
-from boat_jit.utils.op_utils import update_tensor_grads
+from jboat.utils.op_utils import update_tensor_grads
 
-from boat_jit.operation_registry import register_class
-from boat_jit.na_ol.hyper_gradient import HyperGradient
+from jboat.operation_registry import register_class
+from jboat.na_ol.hyper_gradient import HyperGradient
 
 
 @register_class

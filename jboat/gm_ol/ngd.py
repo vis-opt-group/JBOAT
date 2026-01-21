@@ -4,8 +4,8 @@ from ..higher_jit.optim import DifferentiableOptimizer
 from typing import Dict, Any, Callable
 from ..utils.op_utils import stop_grads
 import jittor
-from boat_jit.operation_registry import register_class
-from boat_jit.gm_ol.dynamical_system import DynamicalSystem
+from jboat.operation_registry import register_class
+from jboat.gm_ol.dynamical_system import DynamicalSystem
 
 
 @register_class

@@ -1,7 +1,7 @@
 import time
 import copy
 from typing import Dict, Any, Callable
-from boat_jit.utils.op_utils import (
+from jboat.utils.op_utils import (
     copy_parameter_from_list,
     average_grad,
     manual_update,
@@ -9,12 +9,12 @@ from boat_jit.utils.op_utils import (
 
 import jittor as jit
 from jittor.optim import Optimizer
-import boat_jit.higher_jit as higher
+import jboat.higher_jit as higher
 
 importlib = __import__("importlib")
-from boat_jit.operation_registry import get_registered_operation
-from boat_jit.gm_ol import makes_functional_dynamical_system
-from boat_jit.na_ol import makes_functional_na_operation
+from jboat.operation_registry import get_registered_operation
+from jboat.gm_ol import makes_functional_dynamical_system
+from jboat.na_ol import makes_functional_na_operation
 
 import matplotlib.pyplot as plt
 import os

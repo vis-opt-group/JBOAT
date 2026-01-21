@@ -11,7 +11,7 @@ from jittor import nn
 import logging
 import utils  
 import argparse
-import boat_jit as boat 
+import jboat as boat
 from model_search import Network 
 from jittor.dataset import Dataset
 parser = argparse.ArgumentParser("cifar")

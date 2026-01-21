@@ -1,6 +1,6 @@
 from typing import List, Dict
-from boat_jit.utils import DynamicalSystemRules, ResultStore
-from boat_jit.operation_registry import get_registered_operation
+from jboat.utils import DynamicalSystemRules, ResultStore
+from jboat.operation_registry import get_registered_operation
 
 importlib = __import__("importlib")
 

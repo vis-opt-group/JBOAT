@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img src="https://raw.githubusercontent.com/QHofmann/BOAT/boat_jit_ttest/_static/logo.jpg" alt="BOAT" width="50%" align="top">
+  <img src="./_static/logo.jpg" alt="BOAT" width="50%" align="top">
 </h1>
 <p align="center">
   <b>A Compositional Operation Toolbox for Gradient-based Bi-Level Optimization</b><br>
@@ -15,8 +15,6 @@
 
 [![PyPI version](https://badge.fury.io/py/boat-jit.svg)](https://badge.fury.io/py/boat-jit)
 ![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/callous-youth/BOAT/workflow.yml)
-[![codecov](https://codecov.io/github/callous-youth/BOAT/graph/badge.svg?token=0MKAOQ9KL3)](https://codecov.io/github/callous-youth/BOAT)
-[![pages-build-deployment](https://github.com/callous-youth/BOAT/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/callous-youth/BOAT/actions/workflows/pages/pages-build-deployment)
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/w/callous-youth/BOAT)
 ![GitHub top language](https://img.shields.io/github/languages/top/callous-youth/BOAT)
 ![GitHub language count](https://img.shields.io/github/languages/count/callous-youth/BOAT)
@@ -100,7 +98,7 @@ Once Jittor is ready, install BOAT-jit via PyPI or Source:
 pip install boat-jit
 
 # Or install from Source (Specific Branch)
-git clone -b boat_jit --single-branch [https://github.com/callous-youth/BOAT.git](https://github.com/callous-youth/BOAT.git)
+git clone -b jboat --single-branch [https://github.com/callous-youth/BOAT.git](https://github.com/callous-youth/BOAT.git)
 cd BOAT
 pip install -e .
 ```
@@ -110,9 +108,10 @@ pip install -e .
 BOAT separates the **problem definition** from the **solver configuration**. Below is a Jittor-based example.
 
 ### 1. Load Configurations
+
 ```python
 import json
-import boat_jit as boat
+import jboat as boat
 
 # Load algorithmic configurations
 with open("configs/boat_config.json", "r") as f:

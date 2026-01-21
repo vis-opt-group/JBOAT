@@ -1,5 +1,5 @@
-from boat_jit.utils.op_utils import l2_reg
-from boat_jit.utils.op_utils import (
+from jboat.utils.op_utils import l2_reg
+from jboat.utils.op_utils import (
     update_grads,
     update_tensor_grads,
     grad_unused_zero,
@@ -10,8 +10,8 @@ from jittor import Module
 import copy
 from typing import Dict, Any, Callable, List
 
-from boat_jit.operation_registry import register_class
-from boat_jit.gm_ol.dynamical_system import DynamicalSystem
+from jboat.operation_registry import register_class
+from jboat.gm_ol.dynamical_system import DynamicalSystem
 
 
 @register_class

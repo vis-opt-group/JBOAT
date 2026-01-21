@@ -2,16 +2,16 @@ import jittor as jit
 from jittor import Module
 from typing import List, Callable, Dict
 from ..higher_jit.patch import _MonkeyPatchBase
-from boat_jit.utils.op_utils import update_tensor_grads, conjugate_gradient
+from jboat.utils.op_utils import update_tensor_grads, neumann
 
-from boat_jit.operation_registry import register_class
-from boat_jit.na_ol.hyper_gradient import HyperGradient
+from jboat.operation_registry import register_class
+from jboat.na_ol.hyper_gradient import HyperGradient
 
 
 @register_class
-class CG(HyperGradient):
+class NS(HyperGradient):
     """
-    Computes the hyper-gradient of the upper-level variables using Conjugate Gradient (CG) [1].
+    Calculation of the hyper gradient of the upper-level variables with Neumann Series (NS) [1].
 
     Parameters
     ----------
@@ -28,35 +28,20 @@ class CG(HyperGradient):
     ul_var : List[jittor.Var]
         List of variables optimized with the upper-level objective.
     solver_config : Dict[str, Any]
-        Dictionary containing solver configurations. Expected keys include:
+        Dictionary containing solver configurations, including:
 
-        - `r` (float): Perturbation radius for finite differences.
-        - `lower_level_opt` (jittor.optim.Optimizer): Lower-level optimizer configuration.
         - `gm_op` (str): Indicates dynamic initialization type (e.g., "DI").
-        - GDA-specific parameters if applicable, such as:
-            - `alpha_init` (float): Initial learning rate for GDA.
-            - `alpha_decay` (float): Decay factor for GDA.
-
-    Attributes
-    ----------
-    ll_lr : float
-        Learning rate for the lower-level optimizer, extracted from `lower_level_opt`.
-    dynamic_initialization : bool
-        Indicates whether dynamic initialization is enabled (based on `gm_op`).
-    tolerance : float
-        The tolerance for approximation.
-    K : int
-        Number of iterations for CG approximation.
-    alpha : float
-        Initial learning rate for GDA operations.
-    alpha_decay : float
-        Decay factor applied to the learning rate for GDA.
-    gda_loss : Callable, optional
-        Custom loss function for GDA operations, if specified in `solver_config`.
+        - `lower_level_opt` (Optimizer): Lower-level optimizer configuration.
+        - `CG` (Dict): Conjugate Gradient-specific parameters:
+            - `tolerance` (float): Tolerance for convergence.
+            - `k` (int): Number of iterations for Neumann approximation.
+        - GDA-specific parameters, such as `alpha_init` and `alpha_decay`.
+        - `gda_loss` (Callable, optional): Custom loss function for GDA.
 
     References
     ----------
-    [1] Pedregosa F. "Hyperparameter optimization with approximate gradient," in ICML, 2016.
+    [1] J. Lorraine, P. Vicol, and D. Duvenaud, "Optimizing millions of hyperparameters
+        by implicit differentiation," in AISTATS, 2020.
     """
 
     def __init__(
@@ -69,7 +54,7 @@ class CG(HyperGradient):
         ul_var: List,
         solver_config: Dict,
     ):
-        super(CG, self).__init__(
+        super(NS, self).__init__(
             ll_objective,
             ul_objective,
             ul_model,
@@ -78,11 +63,13 @@ class CG(HyperGradient):
             ul_var,
             solver_config,
         )
-
         self.dynamic_initialization = "DI" in solver_config["gm_op"]
+
         self.ll_lr = solver_config["lower_level_opt"].defaults["lr"]
         self.tolerance = solver_config["CG"]["tolerance"]
         self.K = solver_config["CG"]["k"]
+        self.alpha = solver_config["GDA"]["alpha_init"]
+        self.alpha_decay = solver_config["GDA"]["alpha_decay"]
         self.alpha = solver_config["GDA"]["alpha_init"]
         self.alpha_decay = solver_config["GDA"]["alpha_decay"]
         self.gda_loss = solver_config.get("gda_loss", None)
@@ -105,35 +92,18 @@ class CG(HyperGradient):
         ll_feed_dict : Dict
             Dictionary containing the lower-level data used for optimization.
             It typically includes training data, targets, and other information required to compute the LL objective.
-
         ul_feed_dict : Dict
             Dictionary containing the upper-level data used for optimization.
             It typically includes validation data, targets, and other information required to compute the UL objective.
-
         auxiliary_model : _MonkeyPatchBase
             A patched lower model wrapped by the `higher` library.
             It serves as the lower-level model for optimization.
-
         max_loss_iter : int, optional
-            The number of iterations used for backpropagation. Default is 0.
-
-        hyper_gradient_finished : bool, optional
-            A flag indicating whether the hyper-gradient computation is finished. Default is False.
-
+            The number of iterations used for backpropagation. Defaults to 0.
         next_operation : str, optional
-            The next operator for the calculation of the hypergradient. Default is None.
-
-        **kwargs : dict
-            Additional arguments, such as:
-            - `lower_model_params` (list): Parameters of the lower-level model (default: `list(auxiliary_model.parameters())`).
-            - `hparams` (list): Hyper-parameters of the upper-level model (default: `list(self.ul_var)`).
-
-        Returns
-        -------
-        dict
-            A dictionary containing:
-            - "upper_loss": The current upper-level objective value.
-            - "hyper_gradient_finished": A boolean indicating that the hyper-gradient computation is complete.
+            The next operator for the calculation of the hypergradient. Defaults to None.
+        hyper_gradient_finished : bool, optional
+            A boolean flag indicating whether the hypergradient computation is finished. Defaults to False.
 
         Returns
         -------
@@ -172,12 +142,14 @@ class CG(HyperGradient):
         upper_loss = self.ul_objective(
             ul_feed_dict, self.ul_model, auxiliary_model, params=lower_model_params
         )
+
         if self.dynamic_initialization:
             grads_lower = jit.grad(
                 upper_loss, list(auxiliary_model.parameters(time=0)), retain_graph=True
             )
             update_tensor_grads(self.ll_var, grads_lower)
-        upper_grads = conjugate_gradient(
+
+        grads_upper = neumann(
             lower_model_params,
             hparams,
             upper_loss,
@@ -187,6 +159,6 @@ class CG(HyperGradient):
             self.tolerance,
         )
 
-        update_tensor_grads(self.ul_var, upper_grads)
+        update_tensor_grads(self.ul_var, grads_upper)
 
         return {"upper_loss": upper_loss.item(), "hyper_gradient_finished": True}
