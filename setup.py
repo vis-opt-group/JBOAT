@@ -14,12 +14,12 @@ def get_install_requirements():
 
 
 setup(
-    name="boat-jit",
-    version="1.0.6",
+    name="jboat",
+    version="0.0.1",
     packages=find_packages(),
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/callous-youth/BOAT/tree/boat_jit",
+    url="https://github.com/vis-opt-group/JBOAT",
     license="MIT",
     keywords=[
         "Bilevel-optimization",

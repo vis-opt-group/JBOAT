@@ -1,7 +1,7 @@
-boat_jit
+jboat
 ========
 
 .. toctree::
    :maxdepth: 4
 
-   boat_jit
+   jboat

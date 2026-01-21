@@ -6,7 +6,7 @@
   <br>
   <a href="https://boat.readthedocs.io/en/latest/index.html">Home</a> |
   <a href="https://boat.readthedocs.io/en/latest/install_guide.html#installation">Installation</a> |
-  <a href="https://boat.readthedocs.io/en/latest/boat_jit.html">Docs</a> |
+  <a href="https://boat.readthedocs.io/en/latest/jboat.html">Docs</a> |
   <a href="https://boat.readthedocs.io/en/latest/install_guide.html#how-to-use-boat">Tutorials</a> |
   <a href="https://boat.readthedocs.io/en/latest/index.html#running-example">Examples</a>
 </p>
@@ -27,7 +27,7 @@
 **BOAT** is a compositional **O**per**A**tion-level **T**oolbox for gradient-based **B**LO.
 Unlike existing libraries that typically encapsulate fixed solver routines, BOAT factorizes the BLO workflow into **atomic, reusable primitives**. Through a unified constraint reconstruction perspective, it empowers researchers to **automatically compose** over **85+ solver variants** from a compact set of **17 gradient operations**.
 
-This is the **Jittor-based** version of BOAT (`boat-jit`). It leverages Jittor’s Just-In-Time (JIT) compilation and efficient CUDA/cuDNN backends to significantly **accelerate large-scale gradient-based BLO experiments**.
+This is the **Jittor-based** version of BOAT (`jboat`). It leverages Jittor’s Just-In-Time (JIT) compilation and efficient CUDA/cuDNN backends to significantly **accelerate large-scale gradient-based BLO experiments**.
 
 BOAT supports unified execution across backends via separate branches:
 - **[PyTorch-based](https://github.com/callous-youth/BOAT)**: The widely-used standard version.
@@ -63,7 +63,7 @@ BOAT implements **17 atomic gradient operations** organized into three modular l
 
 ## 🔨 Installation
 
-BOAT-jit is built on top of **Jittor**. Please ensure Jittor is installed correctly before installing BOAT.
+JBOAT is built on top of **Jittor**. Please ensure Jittor is installed correctly before installing BOAT.
 
 ### 1. Install Jittor
 Follow the [Official Installation Guide](https://cg.cs.tsinghua.edu.cn/jittor/download/) or use the commands below:
@@ -91,14 +91,14 @@ brew install libomp
 python3.8 -m pip install jittor
 ```
 
-### 2. Install BOAT-jit
-Once Jittor is ready, install BOAT-jit via PyPI or Source:
+### 2. Install jboat
+Once Jittor is ready, install jboat via PyPI or Source:
 ```bash
 # Install from PyPI
-pip install boat-jit
+pip install jboat
 
 # Or install from Source (Specific Branch)
-git clone -b jboat --single-branch [https://github.com/callous-youth/BOAT.git](https://github.com/callous-youth/BOAT.git)
+git clone https://github.com/vis-opt-group/JBOAT.git
 cd BOAT
 pip install -e .
 ```

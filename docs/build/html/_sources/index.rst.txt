@@ -3,13 +3,13 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to BOAT-Jittor Documentation
+Welcome to JBOAT Documentation
 ============================================
 
-**BOAT** is a compositional, gradient-based **Bi-Level Optimization (BLO)** Python library that abstracts BLO into modular and flexible components, enabling efficient modeling of hierarchical and nested learning problems. It supports a wide spectrum of optimization settings, including first- and second-order methods, nested or non-nested formulations, with or without theoretical guarantees. This repository provides the **Jittor-based** implementation (boat-jit), leveraging Jittor’s JIT compilation and efficient CUDA/cuDNN backends to accelerate large-scale gradient-based BLO experiments.
+**BOAT** is a compositional, gradient-based **Bi-Level Optimization (BLO)** Python library that abstracts BLO into modular and flexible components, enabling efficient modeling of hierarchical and nested learning problems. It supports a wide spectrum of optimization settings, including first- and second-order methods, nested or non-nested formulations, with or without theoretical guarantees. This repository provides the **Jittor-based** implementation (jboat), leveraging Jittor’s JIT compilation and efficient CUDA/cuDNN backends to accelerate large-scale gradient-based BLO experiments.
 
 .. image:: _static/flow.gif
-   :alt: BOAT Framework
+   :alt: JBOAT Framework
    :width: 800px
    :align: center
 
@@ -21,7 +21,7 @@ In this section, we explain the core components of BOAT, how to install the Jitt
 
    description.md
    install_guide.md
-   boat_jit.rst
+   jboat.rst
 
 Running Example
 ----------------------------

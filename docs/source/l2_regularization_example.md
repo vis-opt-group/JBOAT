@@ -24,7 +24,7 @@ import json
 
 ```
 ### Explanation:
-- Imports Jittor, BOAT-JIT, and scikit-learn utilities for dataset loading and splitting.
+- Imports Jittor, JBOAT, and scikit-learn utilities for dataset loading and splitting.
 
 
 ## Step 2: Configuration Loading

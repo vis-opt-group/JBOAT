@@ -30,7 +30,7 @@ autodoc_typehints = "none"
 html_logo = "_static/logo.jpg"
 
 
-project = "BOAT-Jittor"
+project = "JBOAT"
 copyright = "2024, Yaohua Liu"
 author = "Yaohua Liu"
 release = "0.0.1"

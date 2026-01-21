@@ -2,7 +2,7 @@
 
 ## 🔨 Installation
 
-BOAT-jit is built on top of **Jittor**. Please ensure Jittor is installed correctly before installing BOAT.
+JBOAT is built on top of **Jittor**. Please ensure Jittor is installed correctly before installing BOAT.
 
 ### 1. Install Jittor
 Follow the [Official Installation Guide](https://cg.cs.tsinghua.edu.cn/jittor/download/) or use the commands below:
@@ -30,11 +30,11 @@ brew install libomp
 python3.8 -m pip install jittor
 ```
 
-### 2. Install BOAT-jit
-Once Jittor is ready, install BOAT-jit via PyPI or Source:
+### 2. Install jboat
+Once Jittor is ready, install jboat via PyPI or Source:
 ```bash
 # Install from PyPI
-pip install boat-jit
+pip install jboat
 
 # Or install from Source (Specific Branch)
 git clone -b jboat --single-branch [https://github.com/callous-youth/BOAT.git](https://github.com/callous-youth/BOAT.git)
