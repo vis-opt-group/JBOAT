@@ -10,15 +10,15 @@
 ![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)
 
 
-**BOAT** is a compositional **O**per**A**tion-level **T**oolbox for gradient-based **B**LO.
-Unlike existing libraries that typically encapsulate fixed solver routines, BOAT factorizes the BLO workflow into **atomic, reusable primitives**. Through a unified constraint reconstruction perspective, it empowers researchers to **automatically compose** over **85+ solver variants** from a compact set of **17 gradient operations**.
+**JBOAT** is a compositional **O**per**A**tion-level **T**oolbox for gradient-based **B**LO.
+Unlike existing libraries that typically encapsulate fixed solver routines, JBOAT factorizes the BLO workflow into **atomic, reusable primitives**. Through a unified constraint reconstruction perspective, it empowers researchers to **automatically compose** over **85+ solver variants** from a compact set of **17 gradient operations**.
 
 - **[PyTorch-based](https://github.com/callous-youth/BOAT)**: An efficient and widely-used version.
 - **[Jittor-based](https://github.com/callous-youth/BOAT/tree/boat_jit)**: An accelerated version for high-performance tasks with full implementation of the BLO algorithms in the PyTorch version of *BOAT*.
 - **[MindSpore-based](https://github.com/callous-youth/BOAT/tree/boat_ms)**: Incorporating the latest first-order optimization strategies to support emerging application scenarios.
 
 
-BOAT is designed to offer robust computational support for a broad spectrum of BLO research and applications, enabling innovation and efficiency in machine learning and computer vision.
+JBOAT is designed to offer robust computational support for a broad spectrum of BLO research and applications, enabling innovation and efficiency in machine learning and computer vision.
 
 
 ## 🔑 Key Features
@@ -29,15 +29,15 @@ BOAT is designed to offer robust computational support for a broad spectrum of B
 * **🛠 Configuration-Driven**: Define complex optimization strategies via simple `JSON` configurations, decoupling algorithmic logic from model definitions.
 * **✅ Comprehensive Testing**: Achieves **99% code coverage** through rigorous testing with **pytest**, ensuring software robustness.
 
-##  🚀 **Why BOAT?**
+##  🚀 **Why JBOAT?**
 Existing automatic differentiation (AD) tools primarily focus on specific optimization strategies, such as explicit or implicit methods, and are often targeted at meta-learning or specific application scenarios, lacking support for algorithm customization. 
 
-In contrast, **BOAT** expands the landscape of Bi-Level Optimization (BLO) applications by supporting a broader range of problem-adaptive operations. It bridges the gap between theoretical research and practical deployment, offering unparalleled flexibility to design, customize, and accelerate BLO techniques.
+In contrast, **JBOAT** expands the landscape of Bi-Level Optimization (BLO) applications by supporting a broader range of problem-adaptive operations. It bridges the gap between theoretical research and practical deployment, offering unparalleled flexibility to design, customize, and accelerate BLO techniques.
 
 
 ## 🌍 Applications
 
-BOAT covers a wide spectrum of BLO applications, categorized by the optimization target:
+JBOAT covers a wide spectrum of BLO applications, categorized by the optimization target:
 
 * **Data-Centric**: Data Hyper-Cleaning, Synthetic Data Reweighting, Diffusion Model Guidance.
 * **Model-Centric**: Neural Architecture Search (NAS), LLM Prompt Optimization, Parameter Efficient Fine-Tuning (PEFT).

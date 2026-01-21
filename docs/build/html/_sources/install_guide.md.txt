@@ -2,7 +2,7 @@
 
 ## 🔨 Installation
 
-JBOAT is built on top of **Jittor**. Please ensure Jittor is installed correctly before installing BOAT.
+JBOAT is built on top of **Jittor**. Please ensure Jittor is installed correctly before installing JBOAT.
 
 ### 1. Install Jittor
 Follow the [Official Installation Guide](https://cg.cs.tsinghua.edu.cn/jittor/download/) or use the commands below:
@@ -38,14 +38,14 @@ pip install jboat
 
 # Or install from Source (Specific Branch)
 git clone https://github.com/vis-opt-group/JBOAT.git
-cd BOAT
+cd JBOAT
 pip install -e .
 ```
 
-##  ⚡ **How to Use BOAT**
+##  ⚡ **How to Use JBOAT**
 
 ### **1. Load Configuration Files**
-BOAT relies on two key configuration files:
+JBOAT relies on two key configuration files:
 - `boat_config.json`: Specifies optimization strategies and dynamic/hyper-gradient operations.
 - `loss_config.json`: Defines the loss functions for both levels of the BLO process.
 
@@ -77,7 +77,7 @@ upper_opt = jit.nn.Adam(upper_model.parameters(), lr=0.01)
 lower_opt = jit.nn.SGD(lower_model.parameters(), lr=0.01)
 ```
 
-### **3. Customize BOAT Configuration**
+### **3. Customize JBOAT Configuration**
 Modify the boat_config to include your gradient mapping and numerical approximation operation, as well as model and variable details.
 
 ```python
@@ -96,7 +96,7 @@ boat_config["lower_level_var"] = list(lower_model.parameters())
 boat_config["upper_level_var"] = list(upper_model.parameters())
 ```
 
-### **4. Initialize the BOAT Problem**
+### **4. Initialize the JBOAT Problem**
 Modify the boat_config to include your gradient mapping and numerical approximation operation, as well as model and variable details.
 
 ```python

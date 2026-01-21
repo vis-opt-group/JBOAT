@@ -1,6 +1,6 @@
 # L2 Regularization with Jittor
 
-This runnable example shows how to use the BOAT library with the Jittor backend to solve a bi-level optimization problem with L2 regularization, covering end-to-end data loading (sparse-to-dense conversion), model/optimizer setup, solver construction, and iterative training with evaluation.
+This runnable example shows how to use the JBOAT library with the Jittor backend to solve a bi-level optimization problem with L2 regularization, covering end-to-end data loading (sparse-to-dense conversion), model/optimizer setup, solver construction, and iterative training with evaluation.
 
 ## Step-by-Step Explanation
 
@@ -248,7 +248,7 @@ na_op = args.na_op.split(",") if args.na_op else None
 ## Step 8: Bi-Level Optimization Setup
 
 ```python
-# Configure BOAT problem
+# Configure JBOAT problem
 if na_op is not None:
     if "RGT" in na_op:
         boat_config["RGT"]["truncate_iter"] = 1
@@ -301,7 +301,7 @@ for x_itr in range(iterations):
 ### Explanation:
 - The `evaluate` function calculates the model's loss and accuracy on the test dataset.
 - Outputs the test performance metrics for monitoring optimization progress.
-- The `run_iter` function iterates over the bi-level optimization process using BOAT.
+- The `run_iter` function iterates over the bi-level optimization process using JBOAT.
 
 
 

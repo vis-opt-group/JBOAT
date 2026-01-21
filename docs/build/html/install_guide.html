@@ -53,11 +53,11 @@
 <li class="toctree-l3"><a class="reference internal" href="#install-jboat">2. Install jboat</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#how-to-use-boat">⚡ <strong>How to Use BOAT</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-use-jboat">⚡ <strong>How to Use JBOAT</strong></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#load-configuration-files"><strong>1. Load Configuration Files</strong></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#define-models-and-optimizers"><strong>2. Define Models and Optimizers</strong></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#customize-boat-configuration"><strong>3. Customize BOAT Configuration</strong></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#initialize-the-boat-problem"><strong>4. Initialize the BOAT Problem</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#customize-jboat-configuration"><strong>3. Customize JBOAT Configuration</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#initialize-the-jboat-problem"><strong>4. Initialize the JBOAT Problem</strong></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#define-data-feeds"><strong>5. Define Data Feeds</strong></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#run-the-optimization-loop"><strong>6. Run the Optimization Loop</strong></a></li>
 </ul>
@@ -99,7 +99,7 @@
 <h1>Installation and Usage Guide<a class="headerlink" href="#installation-and-usage-guide" title="Permalink to this heading"></a></h1>
 <section id="installation">
 <h2>🔨 Installation<a class="headerlink" href="#installation" title="Permalink to this heading"></a></h2>
-<p>JBOAT is built on top of <strong>Jittor</strong>. Please ensure Jittor is installed correctly before installing BOAT.</p>
+<p>JBOAT is built on top of <strong>Jittor</strong>. Please ensure Jittor is installed correctly before installing JBOAT.</p>
 <section id="install-jittor">
 <h3>1. Install Jittor<a class="headerlink" href="#install-jittor" title="Permalink to this heading"></a></h3>
 <p>Follow the <a class="reference external" href="https://cg.cs.tsinghua.edu.cn/jittor/download/">Official Installation Guide</a> or use the commands below:</p>
@@ -129,17 +129,17 @@ pip<span class="w"> </span>install<span class="w"> </span>jboat
 
 <span class="c1"># Or install from Source (Specific Branch)</span>
 git<span class="w"> </span>clone<span class="w"> </span>https://github.com/vis-opt-group/JBOAT.git
-<span class="nb">cd</span><span class="w"> </span>BOAT
+<span class="nb">cd</span><span class="w"> </span>JBOAT
 pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.
 </pre></div>
 </div>
 </section>
 </section>
-<section id="how-to-use-boat">
-<h2>⚡ <strong>How to Use BOAT</strong><a class="headerlink" href="#how-to-use-boat" title="Permalink to this heading"></a></h2>
+<section id="how-to-use-jboat">
+<h2>⚡ <strong>How to Use JBOAT</strong><a class="headerlink" href="#how-to-use-jboat" title="Permalink to this heading"></a></h2>
 <section id="load-configuration-files">
 <h3><strong>1. Load Configuration Files</strong><a class="headerlink" href="#load-configuration-files" title="Permalink to this heading"></a></h3>
-<p>BOAT relies on two key configuration files:</p>
+<p>JBOAT relies on two key configuration files:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">boat_config.json</span></code>: Specifies optimization strategies and dynamic/hyper-gradient operations.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">loss_config.json</span></code>: Defines the loss functions for both levels of the BLO process.</p></li>
@@ -172,8 +172,8 @@ pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </s
 </pre></div>
 </div>
 </section>
-<section id="customize-boat-configuration">
-<h3><strong>3. Customize BOAT Configuration</strong><a class="headerlink" href="#customize-boat-configuration" title="Permalink to this heading"></a></h3>
+<section id="customize-jboat-configuration">
+<h3><strong>3. Customize JBOAT Configuration</strong><a class="headerlink" href="#customize-jboat-configuration" title="Permalink to this heading"></a></h3>
 <p>Modify the boat_config to include your gradient mapping and numerical approximation operation, as well as model and variable details.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Example gradient mapping and numerical approximation operation Combination.</span>
 <span class="n">gm_op</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;NGD&quot;</span><span class="p">,</span> <span class="s2">&quot;DI&quot;</span><span class="p">,</span> <span class="s2">&quot;GDA&quot;</span><span class="p">]</span>  <span class="c1"># Gradient Mapping Operations (Demo Only)</span>
@@ -191,8 +191,8 @@ pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </s
 </pre></div>
 </div>
 </section>
-<section id="initialize-the-boat-problem">
-<h3><strong>4. Initialize the BOAT Problem</strong><a class="headerlink" href="#initialize-the-boat-problem" title="Permalink to this heading"></a></h3>
+<section id="initialize-the-jboat-problem">
+<h3><strong>4. Initialize the JBOAT Problem</strong><a class="headerlink" href="#initialize-the-jboat-problem" title="Permalink to this heading"></a></h3>
 <p>Modify the boat_config to include your gradient mapping and numerical approximation operation, as well as model and variable details.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Initialize the problem</span>
 <span class="n">b_optimizer</span> <span class="o">=</span> <span class="n">boat</span><span class="o">.</span><span class="n">Problem</span><span class="p">(</span><span class="n">boat_config</span><span class="p">,</span> <span class="n">loss_config</span><span class="p">)</span>

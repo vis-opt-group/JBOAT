@@ -124,7 +124,7 @@
              
   <section id="l2-regularization-with-jittor">
 <h1>L2 Regularization with Jittor<a class="headerlink" href="#l2-regularization-with-jittor" title="Permalink to this heading"></a></h1>
-<p>This runnable example shows how to use the BOAT library with the Jittor backend to solve a bi-level optimization problem with L2 regularization, covering end-to-end data loading (sparse-to-dense conversion), model/optimizer setup, solver construction, and iterative training with evaluation.</p>
+<p>This runnable example shows how to use the JBOAT library with the Jittor backend to solve a bi-level optimization problem with L2 regularization, covering end-to-end data loading (sparse-to-dense conversion), model/optimizer setup, solver construction, and iterative training with evaluation.</p>
 <section id="step-by-step-explanation">
 <h2>Step-by-Step Explanation<a class="headerlink" href="#step-by-step-explanation" title="Permalink to this heading"></a></h2>
 </section>
@@ -388,7 +388,7 @@
 </section>
 <section id="step-8-bi-level-optimization-setup">
 <h2>Step 8: Bi-Level Optimization Setup<a class="headerlink" href="#step-8-bi-level-optimization-setup" title="Permalink to this heading"></a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Configure BOAT problem</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Configure JBOAT problem</span>
 <span class="k">if</span> <span class="n">na_op</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
     <span class="k">if</span> <span class="s2">&quot;RGT&quot;</span> <span class="ow">in</span> <span class="n">na_op</span><span class="p">:</span>
         <span class="n">boat_config</span><span class="p">[</span><span class="s2">&quot;RGT&quot;</span><span class="p">][</span><span class="s2">&quot;truncate_iter&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
@@ -445,7 +445,7 @@
 <ul class="simple">
 <li><p>The <code class="docutils literal notranslate"><span class="pre">evaluate</span></code> function calculates the model’s loss and accuracy on the test dataset.</p></li>
 <li><p>Outputs the test performance metrics for monitoring optimization progress.</p></li>
-<li><p>The <code class="docutils literal notranslate"><span class="pre">run_iter</span></code> function iterates over the bi-level optimization process using BOAT.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">run_iter</span></code> function iterates over the bi-level optimization process using JBOAT.</p></li>
 </ul>
 </section>
 </section>

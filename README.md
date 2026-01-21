@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img src="./_static/logo.jpg" alt="BOAT" width="50%" align="top">
+  <img src="./_static/logo.jpg" alt="JBOAT" width="50%" align="top">
 </h1>
 <p align="center">
   <b>A Compositional Operation Toolbox for Gradient-based Bi-Level Optimization</b><br>
@@ -24,18 +24,18 @@
 
 </div>
 
-**BOAT** is a compositional **O**per**A**tion-level **T**oolbox for gradient-based **B**LO.
-Unlike existing libraries that typically encapsulate fixed solver routines, BOAT factorizes the BLO workflow into **atomic, reusable primitives**. Through a unified constraint reconstruction perspective, it empowers researchers to **automatically compose** over **85+ solver variants** from a compact set of **17 gradient operations**.
+**JBOAT** is a compositional **O**per**A**tion-level **T**oolbox for gradient-based **B**LO.
+Unlike existing libraries that typically encapsulate fixed solver routines, JBOAT factorizes the BLO workflow into **atomic, reusable primitives**. Through a unified constraint reconstruction perspective, it empowers researchers to **automatically compose** over **85+ solver variants** from a compact set of **17 gradient operations**.
 
-This is the **Jittor-based** version of BOAT (`jboat`). It leverages Jittor’s Just-In-Time (JIT) compilation and efficient CUDA/cuDNN backends to significantly **accelerate large-scale gradient-based BLO experiments**.
+This is the **Jittor-based** version of JBOAT (`jboat`). It leverages Jittor’s Just-In-Time (JIT) compilation and efficient CUDA/cuDNN backends to significantly **accelerate large-scale gradient-based BLO experiments**.
 
-BOAT supports unified execution across backends via separate branches:
+JBOAT supports unified execution across backends via separate branches:
 - **[PyTorch-based](https://github.com/callous-youth/BOAT)**: The widely-used standard version.
 - **[MindSpore-based](https://github.com/callous-youth/BOAT/tree/boat_ms)**: Optimized for ascending chips and industry scenarios.
 
 <p align="center">
   <a href="https://github.com/callous-youth/BOAT">
-    <img src="https://raw.githubusercontent.com/QHofmann/BOAT/boat_jit_ttest/_static/BOAT.png" alt="BOAT Structure" width="90%" align="top">
+    <img src="https://raw.githubusercontent.com/QHofmann/BOAT/boat_jit_ttest/_static/BOAT.png" alt="JBOAT Structure" width="90%" align="top">
   </a>
 </p>
 
@@ -51,7 +51,7 @@ BOAT supports unified execution across backends via separate branches:
 
 <div align="center">
 
-BOAT implements **17 atomic gradient operations** organized into three modular libraries. These primitives can be dynamically serialized to generate over **85+ solver variants**, covering the full spectrum of BLO methodologies.
+JBOAT implements **17 atomic gradient operations** organized into three modular libraries. These primitives can be dynamically serialized to generate over **85+ solver variants**, covering the full spectrum of BLO methodologies.
 
 | Library | Functional Role | Supported Atomic Operations |
 | :--- | :--- | :--- |
@@ -63,7 +63,7 @@ BOAT implements **17 atomic gradient operations** organized into three modular l
 
 ## 🔨 Installation
 
-JBOAT is built on top of **Jittor**. Please ensure Jittor is installed correctly before installing BOAT.
+JBOAT is built on top of **Jittor**. Please ensure Jittor is installed correctly before installing JBOAT.
 
 ### 1. Install Jittor
 Follow the [Official Installation Guide](https://cg.cs.tsinghua.edu.cn/jittor/download/) or use the commands below:
@@ -99,13 +99,13 @@ pip install jboat
 
 # Or install from Source (Specific Branch)
 git clone https://github.com/vis-opt-group/JBOAT.git
-cd BOAT
+cd JBOAT
 pip install -e .
 ```
 
-## ⚡ How to Use BOAT
+## ⚡ How to Use JBOAT
 
-BOAT separates the **problem definition** from the **solver configuration**. Below is a Jittor-based example.
+JBOAT separates the **problem definition** from the **solver configuration**. Below is a Jittor-based example.
 
 ### 1. Load Configurations
 
@@ -143,13 +143,13 @@ lower_opt = jit.nn.SGD(lower_model.parameters(), lr=1e-2)
 Inject runtime objects into the configuration.
 
 ```python
-# Configure BOAT with Jittor models/optimizers
+# Configure JBOAT with Jittor models/optimizers
 boat_config["lower_level_model"] = lower_model
 boat_config["upper_level_model"] = upper_model
 boat_config["lower_level_opt"] = lower_opt
 boat_config["upper_level_opt"] = upper_opt
 
-# Initialize the BOAT core
+# Initialize the JBOAT core
 b_optimizer = boat.Problem(boat_config, loss_config)
 ```
 
@@ -182,7 +182,7 @@ for x_itr in range(1000):
 
 ## 🌍 Applications
 
-BOAT covers a wide spectrum of BLO applications, categorized by the optimization target:
+JBOAT covers a wide spectrum of BLO applications, categorized by the optimization target:
 
 * **Data-Centric**: Data Hyper-Cleaning, Synthetic Data Reweighting, Diffusion Model Guidance.
 * **Model-Centric**: Neural Architecture Search (NAS), LLM Prompt Optimization, Parameter Efficient Fine-Tuning (PEFT).
@@ -190,7 +190,7 @@ BOAT covers a wide spectrum of BLO applications, categorized by the optimization
 
 ## 📝 Citation
 
-If you find BOAT useful in your research, please consider citing our paper:
+If you find JBOAT useful in your research, please consider citing our paper:
 
 ```bibtex
 @article{liu2025boat,
