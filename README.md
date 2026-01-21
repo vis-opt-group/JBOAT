@@ -4,11 +4,11 @@
 <p align="center">
   <b>A Compositional Operation Toolbox for Gradient-based Bi-Level Optimization</b><br>
   <br>
-  <a href="https://boat.readthedocs.io/en/latest/index.html">Home</a> |
-  <a href="https://boat.readthedocs.io/en/latest/install_guide.html#installation">Installation</a> |
-  <a href="https://boat.readthedocs.io/en/latest/jboat.html">Docs</a> |
-  <a href="https://boat.readthedocs.io/en/latest/install_guide.html#how-to-use-boat">Tutorials</a> |
-  <a href="https://boat.readthedocs.io/en/latest/index.html#running-example">Examples</a>
+  <a href="https://jboat.readthedocs.io/en/latest/index.html">Home</a> |
+  <a href="https://jboat.readthedocs.io/en/latest/install_guide.html#installation">Installation</a> |
+  <a href="https://jboat.readthedocs.io/en/latest/jboat.html">Docs</a> |
+  <a href="https://jboat.readthedocs.io/en/latest/install_guide.html#how-to-use-boat">Tutorials</a> |
+  <a href="https://jboat.readthedocs.io/en/latest/index.html#running-example">Examples</a>
 </p>
 
 <div align="center">

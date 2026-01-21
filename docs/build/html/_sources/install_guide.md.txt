@@ -37,7 +37,7 @@ Once Jittor is ready, install jboat via PyPI or Source:
 pip install jboat
 
 # Or install from Source (Specific Branch)
-git clone -b jboat --single-branch [https://github.com/callous-youth/BOAT.git](https://github.com/callous-youth/BOAT.git)
+git clone https://github.com/vis-opt-group/JBOAT.git
 cd BOAT
 pip install -e .
 ```
