@@ -13,7 +13,7 @@
 
 <div align="center">
 
-[![PyPI version](https://badge.fury.io/py/jboat.svg)](https://badge.fury.io/py/jboat)
+[![PyPI version](https://badge.fury.io/py/jboat.svg?icon=si%3Apython)](https://badge.fury.io/py/jboat)
 ![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/callous-youth/BOAT/workflow.yml)
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/w/callous-youth/BOAT)
 ![GitHub top language](https://img.shields.io/github/languages/top/callous-youth/BOAT)
