@@ -29,9 +29,6 @@ Unlike existing libraries that typically encapsulate fixed solver routines, JBOA
 
 This is the **Jittor-based** version of JBOAT (`jboat`). It leverages Jittor’s Just-In-Time (JIT) compilation and efficient CUDA/cuDNN backends to significantly **accelerate large-scale gradient-based BLO experiments**.
 
-JBOAT supports unified execution across backends via separate branches:
-- **[PyTorch-based](https://github.com/callous-youth/BOAT)**: The widely-used standard version.
-- **[MindSpore-based](https://github.com/callous-youth/BOAT/tree/boat_ms)**: Optimized for ascending chips and industry scenarios.
 
 <p align="center">
   <a href="https://github.com/callous-youth/BOAT">

@@ -13,10 +13,6 @@
 **JBOAT** is a compositional **O**per**A**tion-level **T**oolbox for gradient-based **B**LO.
 Unlike existing libraries that typically encapsulate fixed solver routines, JBOAT factorizes the BLO workflow into **atomic, reusable primitives**. Through a unified constraint reconstruction perspective, it empowers researchers to **automatically compose** over **85+ solver variants** from a compact set of **17 gradient operations**.
 
-- **[PyTorch-based](https://github.com/callous-youth/BOAT)**: An efficient and widely-used version.
-- **[Jittor-based](https://github.com/callous-youth/BOAT/tree/boat_jit)**: An accelerated version for high-performance tasks with full implementation of the BLO algorithms in the PyTorch version of *BOAT*.
-- **[MindSpore-based](https://github.com/callous-youth/BOAT/tree/boat_ms)**: Incorporating the latest first-order optimization strategies to support emerging application scenarios.
-
 
 JBOAT is designed to offer robust computational support for a broad spectrum of BLO research and applications, enabling innovation and efficiency in machine learning and computer vision.
 
